@@ -6,7 +6,6 @@ import 'package:flutter_user_profile/pages/edit_email.dart';
 import 'package:flutter_user_profile/pages/edit_image.dart';
 import 'package:flutter_user_profile/pages/edit_name.dart';
 import 'package:flutter_user_profile/pages/edit_phone.dart';
-import 'package:flutter_user_profile/widgets/appbar_widget.dart';
 import '../user/user.dart';
 import '../widgets/display_image_widget.dart';
 import '../user/user_data.dart';
