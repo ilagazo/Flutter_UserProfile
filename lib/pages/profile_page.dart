@@ -6,6 +6,7 @@ import 'package:flutter_user_profile/pages/edit_email.dart';
 import 'package:flutter_user_profile/pages/edit_image.dart';
 import 'package:flutter_user_profile/pages/edit_name.dart';
 import 'package:flutter_user_profile/pages/edit_phone.dart';
+import 'package:flutter_user_profile/widgets/appbar_widget.dart';
 import '../user/user.dart';
 import '../widgets/display_image_widget.dart';
 import '../user/user_data.dart';
@@ -22,10 +23,14 @@ class _ProfilePageState extends State<ProfilePage> {
     final user = UserData.myUser;
 
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.all(40.0),
-        physics: BouncingScrollPhysics(),
+      body: Column(
+        // padding: EdgeInsets.all(40.0),
+        // physics: BouncingScrollPhysics(),
         children: [
+          AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
           Center(
               child: Padding(
                   padding: EdgeInsets.only(bottom: 20),
@@ -40,9 +45,11 @@ class _ProfilePageState extends State<ProfilePage> {
           DisplayImage(
             imagePath: user.image,
             onPressed: () async {
-              navigateSecondPage(EditImagePage());
+              await Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => EditImagePage()),
+              );
+              setState(() {});
             },
-            // onClicked: () async {},
           ),
           buildUserInfoDisplay(user.name, 'Name', EditNameFormPage()),
           buildUserInfoDisplay(user.phone, 'Phone', EditPhoneFormPage()),
@@ -64,7 +71,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 title,
                 style: TextStyle(
                   fontSize: 15,
-                  fontWeight: FontWeight.w100,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
                 ),
               ),
               SizedBox(
@@ -108,13 +116,14 @@ class _ProfilePageState extends State<ProfilePage> {
             'Tell Us About Yourself',
             style: TextStyle(
               fontSize: 15,
-              fontWeight: FontWeight.w100,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey,
             ),
           ),
           const SizedBox(height: 1),
           Container(
               width: 350,
-              height: 150,
+              height: 200,
               decoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(
@@ -127,12 +136,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         onPressed: () {
                           navigateSecondPage(EditDescriptionFormPage());
                         },
-                        child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              user.aboutMeDescription,
-                              style: TextStyle(fontSize: 16, height: 1.4),
-                            )))),
+                        child: Padding(
+                            padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
+                            child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  user.aboutMeDescription,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    height: 1.4,
+                                  ),
+                                ))))),
                 Icon(
                   Icons.keyboard_arrow_right,
                   color: Colors.grey,

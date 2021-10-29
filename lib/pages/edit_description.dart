@@ -30,34 +30,34 @@ class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
         body: Form(
           key: _formKey,
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: EdgeInsets.only(right: 75),
                     child: const Text(
                       "What type of passenger\nare you?",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     )),
                 Padding(
-                    padding: EdgeInsets.only(left: 20, top: 20),
+                    padding: EdgeInsets.all(20),
                     child: SizedBox(
                         height: 250,
                         width: 350,
                         child: TextFormField(
                           // Handles Form Validation
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a description about yourself.';
+                            if (value == null || value.isEmpty || value.length > 200) {
+                              return 'Please describe yourself but keep it under 200 characters.';
                             }
                             return null;
                           },
                           controller: descriptionController,
+                          textAlignVertical: TextAlignVertical.top,
                           decoration: const InputDecoration(
                               alignLabelWithHint: true,
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 70, horizontal: 10),
+                              contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 100),
                               hintMaxLines: 3,
                               hintText:
                                   'Write a little bit about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.'),
