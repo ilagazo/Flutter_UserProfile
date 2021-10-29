@@ -1,6 +1,6 @@
 # Flutter User Profile App
  
-This repository shows how I built a simple User Profile UI using Flutter.
+This repository shows how I built a simple User Profile UI using Flutter. Please note that I was unable to get the Profile Image to update when a user selects a new photo.
 
 #Installation
 1) Please have Flutter environment setup. If you do not have flutter, please follow the instructions in this link: https://flutter.dev/docs/get-started/install
