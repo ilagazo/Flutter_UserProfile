@@ -17,8 +17,7 @@ class EditImagePage extends StatefulWidget {
 
 class _EditImagePageState extends State<EditImagePage> {
   var user = UserData.myUser;
-   late File _image;
-  
+
   void updateUserValue(File value) {
     user.image = value as String;
   }
@@ -32,29 +31,38 @@ class _EditImagePageState extends State<EditImagePage> {
           child: Column(
             children: <Widget>[
               GestureDetector(
-                onTap: () {
-                  _showPicker(context);
-                }, child: Image.network(user.image),
-              ),
+              onTap: () async {
+                  final image =
+                      await ImagePicker().pickImage(source: ImageSource.gallery);
 
+                  if (image == null) return;
 
-              // DisplayImage(
-              //   imagePath: user.image,
-              //   onPressed: () async {
-              //     final image =
-              //         await ImagePicker().getImage(source: ImageSource.gallery);
+                  final location = await getApplicationDocumentsDirectory();
+                  final name = basename(image.path);
+                  final imageFile = File('${location.path}/$name');
+                  final newImage =
+                        await File(image.path).copy(imageFile.path);
 
-              //     if (image == null) return;
+                  setState(() => updateUserValue(newImage));
+                },
+              child:
+              DisplayImage(
+                imagePath: user.image,
+                onPressed: () async {
+                  final image =
+                      await ImagePicker().pickImage(source: ImageSource.gallery);
 
-              //     final location = await getApplicationDocumentsDirectory();
-              //     final name = basename(image.path);
-              //     final imageFile = File('${location.path}/$name');
-              //     final newImage =
-              //           await File(image.path).copy(imageFile.path);
+                  if (image == null) return;
 
-              //     setState(() => updateUserValue(newImage));
-              //   },
-              // ),
+                  final location = await getApplicationDocumentsDirectory();
+                  final name = basename(image.path);
+                  final imageFile = File('${location.path}/$name');
+                  final newImage =
+                        await File(image.path).copy(imageFile.path);
+
+                  setState(() => updateUserValue(newImage));
+                },
+              )),
               Padding(
                   padding: EdgeInsets.only(top: 150),
                   child: Align(
@@ -74,54 +82,4 @@ class _EditImagePageState extends State<EditImagePage> {
           )),
     );
   }
-
-  _imgFromCamera() async {
-  File image = (await ImagePicker.pickImage(
-    source: ImageSource.camera, imageQuality: 50
-  )) as File;
-
-  setState(() {
-    _image = image;
-  });
-}
-
-_imgFromGallery() async {
-  File image = (await  ImagePicker.pickImage(
-      source: ImageSource.gallery, imageQuality: 50
-  )) as File;
-
-  setState(() {
-    _image = image;
-  });
-}
-void _showPicker(context) {
-  showModalBottomSheet(
-      context: context,
-      builder: (BuildContext bc) {
-        return SafeArea(
-          child: Container(
-            child: new Wrap(
-              children: <Widget>[
-                new ListTile(
-                    leading: new Icon(Icons.photo_library),
-                    title: new Text('Photo Library'),
-                    onTap: () {
-                      _imgFromGallery();
-                      Navigator.of(context).pop();
-                    }),
-                new ListTile(
-                  leading: new Icon(Icons.photo_camera),
-                  title: new Text('Camera'),
-                  onTap: () {
-                    _imgFromCamera();
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
-      }
-    );
-}
 }

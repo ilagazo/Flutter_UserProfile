@@ -24,8 +24,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Scaffold(
       body: Column(
-        // padding: EdgeInsets.all(40.0),
-        // physics: BouncingScrollPhysics(),
         children: [
           AppBar(
             backgroundColor: Colors.transparent,
@@ -42,15 +40,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       color: Color.fromRGBO(64, 105, 225, 1),
                     ),
                   ))),
-          DisplayImage(
-            imagePath: user.image,
-            onPressed: () async {
-              await Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => EditImagePage()),
-              );
-              setState(() {});
-            },
-          ),
+          InkWell(
+              onTap: () {
+                navigateSecondPage(EditImagePage());
+              },
+              child: DisplayImage(
+                imagePath: user.image,
+                onPressed: () {},
+              )),
           buildUserInfoDisplay(user.name, 'Name', EditNameFormPage()),
           buildUserInfoDisplay(user.phone, 'Phone', EditPhoneFormPage()),
           buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
