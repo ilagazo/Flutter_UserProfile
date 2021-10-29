@@ -39,18 +39,21 @@ class EditNameFormPageState extends State<EditNameFormPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.only(right: 85),
+              SizedBox(
+                  width: 330,
                   child: const Text(
                     "What's Your Name?",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),
-              )),
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                      padding: EdgeInsets.all(15.0),
+                      padding: EdgeInsets.fromLTRB(0, 40, 16, 0),
                       child: SizedBox(
                           height: 100,
                           width: 150,
@@ -61,30 +64,32 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                                 return 'Please enter your first name';
                               } else if (!isAlpha(value)) {
                                 return 'Only Letters Please';
-                             }
+                              }
                               return null;
                             },
                             decoration:
                                 InputDecoration(labelText: 'First Name'),
                             controller: firstNameController,
                           ))),
-                  SizedBox(
-                      height: 100,
-                      width: 150,
-                      child: TextFormField(
-                        // Handles Form Validation for Last Name
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your last name';
-                          } else if (!isAlpha(value)) {
-                            return 'Only Letters Please';
-                          }
-                          return null;
-                        },
-                        decoration:
-                            const InputDecoration(labelText: 'Last Name'),
-                        controller: secondNameController,
-                      ))
+                  Padding(
+                      padding: EdgeInsets.fromLTRB(0, 40, 16, 0),
+                      child: SizedBox(
+                          height: 100,
+                          width: 150,
+                          child: TextFormField(
+                            // Handles Form Validation for Last Name
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your last name';
+                              } else if (!isAlpha(value)) {
+                                return 'Only Letters Please';
+                              }
+                              return null;
+                            },
+                            decoration:
+                                const InputDecoration(labelText: 'Last Name'),
+                            controller: secondNameController,
+                          )))
                 ],
               ),
               Padding(
@@ -92,7 +97,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                   child: Align(
                       alignment: Alignment.bottomCenter,
                       child: SizedBox(
-                        width: 320,
+                        width: 330,
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {

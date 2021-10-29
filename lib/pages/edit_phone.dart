@@ -43,20 +43,20 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.only(right: 60),
+                SizedBox(
+                    width: 320,
                     child: const Text(
                       "What's Your Phone Number?",
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     )),
                 Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: EdgeInsets.only(top: 40),
                     child: SizedBox(
                         height: 100,
-                        width: 375,
+                        width: 320,
                         child: TextFormField(
-                           // Handles Form Validation
+                          // Handles Form Validation
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your phone number';
@@ -77,7 +77,7 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
                     child: Align(
                         alignment: Alignment.bottomCenter,
                         child: SizedBox(
-                          width: 375,
+                          width: 320,
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {

@@ -28,4 +28,20 @@ class User {
         phone: phone ?? this.phone,
         aboutMeDescription: about ?? this.aboutMeDescription,
       );
+
+  static User fromJson(Map<String, dynamic> json) => User(
+        image: json['imagePath'],
+        name: json['name'],
+        email: json['email'],
+        aboutMeDescription: json['about'],
+        phone: json['phone'],
+      );
+
+  Map<String, dynamic> toJson() => {
+        'imagePath': image,
+        'name': name,
+        'email': email,
+        'about': aboutMeDescription,
+        'phone': phone,
+      };
 }

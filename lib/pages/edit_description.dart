@@ -8,6 +8,7 @@ class EditDescriptionFormPage extends StatefulWidget {
   _EditDescriptionFormPageState createState() =>
       _EditDescriptionFormPageState();
 }
+
 class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
   final _formKey = GlobalKey<FormState>();
   final descriptionController = TextEditingController();
@@ -33,8 +34,8 @@ class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.only(right: 75),
+                SizedBox(
+                    width: 350,
                     child: const Text(
                       "What type of passenger\nare you?",
                       style:
@@ -48,7 +49,9 @@ class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
                         child: TextFormField(
                           // Handles Form Validation
                           validator: (value) {
-                            if (value == null || value.isEmpty || value.length > 200) {
+                            if (value == null ||
+                                value.isEmpty ||
+                                value.length > 200) {
                               return 'Please describe yourself but keep it under 200 characters.';
                             }
                             return null;
@@ -57,7 +60,8 @@ class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
                           textAlignVertical: TextAlignVertical.top,
                           decoration: const InputDecoration(
                               alignLabelWithHint: true,
-                              contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 100),
+                              contentPadding:
+                                  EdgeInsets.fromLTRB(10, 15, 10, 100),
                               hintMaxLines: 3,
                               hintText:
                                   'Write a little bit about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.'),

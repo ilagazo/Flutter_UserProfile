@@ -38,8 +38,8 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.only(right: 160),
+                SizedBox(
+                    width: 320,
                     child: const Text(
                       "What's your email?",
                       style:
@@ -47,10 +47,10 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
                       textAlign: TextAlign.left,
                     )),
                 Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: EdgeInsets.only(top: 40),
                     child: SizedBox(
                         height: 100,
-                        width: 375,
+                        width: 320,
                         child: TextFormField(
                           // Handles Form Validation
                           validator: (value) {
@@ -68,7 +68,7 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
                     child: Align(
                         alignment: Alignment.bottomCenter,
                         child: SizedBox(
-                          width: 375,
+                          width: 320,
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {

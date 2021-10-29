@@ -27,6 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
           AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
+            toolbarHeight: 10,
           ),
           Center(
               child: Padding(
@@ -50,7 +51,10 @@ class _ProfilePageState extends State<ProfilePage> {
           buildUserInfoDisplay(user.name, 'Name', EditNameFormPage()),
           buildUserInfoDisplay(user.phone, 'Phone', EditPhoneFormPage()),
           buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
-          buildAbout(user),
+          Expanded(
+            child: buildAbout(user),
+            flex: 4,
+          )
         ],
       ),
     );
