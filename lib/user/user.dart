@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-
 class User {
   String image;
-  // Image image;
   String name;
   String email;
   String phone;
@@ -16,4 +13,19 @@ class User {
     required this.phone,
     required this.aboutMeDescription,
   });
+
+  User copy({
+    String? imagePath,
+    String? name,
+    String? phone,
+    String? email,
+    String? about,
+  }) =>
+      User(
+        image: imagePath ?? this.image,
+        name: name ?? this.name,
+        email: email ?? this.email,
+        phone: phone ?? this.phone,
+        aboutMeDescription: about ?? this.aboutMeDescription,
+      );
 }

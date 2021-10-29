@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class DisplayImage extends StatelessWidget {
@@ -28,16 +30,15 @@ class DisplayImage extends StatelessWidget {
 
   // Builds Profile Image
   Widget buildImage(Color color) {
-    //For NetWork Image
-    final image = NetworkImage(imagePath);
+    final image = imagePath.contains('https://')
+        ? NetworkImage(imagePath)
+        : FileImage(File(imagePath));
 
     return CircleAvatar(
       radius: 75,
       backgroundColor: color,
       child: CircleAvatar(
-        backgroundImage: image,
-        // backgroundImage: AssetImage(
-        //     'lib/assets/Darth_Vader_in_The_Empire_Strikes_Back.jpeg'),
+        backgroundImage: image as ImageProvider,
         radius: 70,
       ),
     );

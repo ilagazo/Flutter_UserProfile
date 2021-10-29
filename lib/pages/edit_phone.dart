@@ -40,11 +40,11 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
         body: Form(
           key: _formKey,
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                    padding: EdgeInsets.only(left: 15),
+                    padding: EdgeInsets.only(right: 60),
                     child: const Text(
                       "What's Your Phone Number?",
                       style:

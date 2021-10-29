@@ -36,14 +36,15 @@ class EditNameFormPageState extends State<EditNameFormPage> {
         body: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Padding(
-                  padding: EdgeInsets.only(left: 55),
+                  padding: EdgeInsets.only(right: 85),
                   child: const Text(
                     "What's Your Name?",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  )),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),
+              )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -91,7 +92,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                   child: Align(
                       alignment: Alignment.bottomCenter,
                       child: SizedBox(
-                        width: 350,
+                        width: 320,
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
