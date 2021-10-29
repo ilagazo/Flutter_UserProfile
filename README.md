@@ -8,3 +8,5 @@ This repository shows how I built a simple User Profile UI using Flutter.
 3) Run the project using any desired Android, iOS, or macOs simulator (i.e. Pixel, Iphone, or macOS simulator)
 
 # Here's How It Looks
+https://user-images.githubusercontent.com/57332846/139458380-d9df4aae-5c2e-4aef-abea-b05a6577c1e0.mp4
+
